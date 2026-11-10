@@ -1,0 +1,6 @@
+build/
+*.o
+*.dSYM/
+__pycache__/
+.vscode/
+.idea/
