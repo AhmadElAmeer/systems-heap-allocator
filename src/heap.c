@@ -307,7 +307,7 @@ const char *heap_check(const heap_t *h) {
         if (s % HEAP_ALIGNMENT) return "block size not a multiple of 16";
         if (((uintptr_t)payload(b) & (HEAP_ALIGNMENT - 1)) != 0) return "payload misaligned";
         if (b + s > h->epilogue) return "block extends past the epilogue";
-        if (get_word(b) != get_word(b + s - WSIZE)) return "header and footer disagree";
+        if (get_word(b) != get_word(footer(b))) return "header and footer disagree";
         if (!is_alloc(b)) {
             if (prev_was_free) return "two adjacent free blocks (missed coalesce)";
             free_in_walk++;
