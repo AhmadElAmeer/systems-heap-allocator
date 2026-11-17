@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and run tests (-Werror)
+        run: make CC=${{ matrix.cc }} test
+      - name: Run tests under AddressSanitizer + UBSan
+        run: make CC=${{ matrix.cc }} test-san
+      - name: Build the benchmark
+        run: make CC=${{ matrix.cc }} all

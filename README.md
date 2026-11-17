@@ -1,5 +1,7 @@
 # systems-heap-allocator
 
+[![CI](https://github.com/AhmadElAmeer/systems-heap-allocator/actions/workflows/ci.yml/badge.svg)](https://github.com/AhmadElAmeer/systems-heap-allocator/actions/workflows/ci.yml)
+
 A `malloc` / `free` / `realloc` implementation in C, plus a benchmark that replays allocation traces to compare first-fit, next-fit and best-fit placement on the same workloads.
 
 ## Problem
